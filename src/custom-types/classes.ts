@@ -11,38 +11,38 @@ enum PhotoOrientation {
 
 class Picture {
   //Propiedades
-  id: number;
-  title: string;
+  #id: number;
+  #title: string;
   orientation: PhotoOrientation;
 
-  constructor(id: number, title: string, orientation: PhotoOrientation) {
-    this.id = id;
-    this.title = title;
+  public constructor(id: number, title: string, orientation: PhotoOrientation) {
+    this.#id = id;
+    this.#title = title;
     this.orientation = orientation;
   }
 
   // Comportamiento
 
-  toString() {
-    return `[id: ${this.id} 
-             title : ${this.title}
+  public toString() {
+    return `[id: ${this.#id} 
+             title : ${this.#title}
              orientation : ${this.orientation}]`;
   }
 }
 
 class Album {
-  id: number;
-  title: string;
-  pictures: Picture[];
+  #id: number;
+  #title: string;
+  #pictures: Picture[];
 
-  constructor(id: number, title: string) {
-    this.id = id;
-    this.title = title;
-    this.pictures = [];
+  public constructor(id: number, title: string) {
+    this.#id = id;
+    this.#title = title;
+    this.#pictures = [];
   }
 
-  addPicture(picture: Picture) {
-    this.pictures.push(picture);
+  public addPicture(picture: Picture) {
+    this.#pictures.push(picture);
   }
 }
 
@@ -53,6 +53,12 @@ const picture: Picture = new Picture(
   PhotoOrientation.Panorama
 );
 album.addPicture(picture);
+
+// Access to public members
+
+// picture.#id = 2;
+// picture.#title = "Another title";
+// album.#title = "Personal Activities";
 
 console.log("album", album);
 export = {};
