@@ -19,24 +19,11 @@ enum PhotoOrientation {
 
 ## Entities
 
-### User
+### Item
 
 ```ts
-class User {
-  private album: Album[];
-
-  constructor(
-    private id: number,
-    private username: string,
-    private firstName: string,
-    private isPro: boolean
-  ) {
-    this.album = [];
-  }
-
-  addAlbum(album: Album) {}
-
-  removeAlbum(album: Album): Album | undefined {}
+class Item {
+  constructor(public readonly id: number, protected title: string) {}
 }
 ```
 
@@ -56,14 +43,6 @@ class Picture extends Item {
 }
 ```
 
-### Item
-
-```ts
-class Item {
-  constructor(public readonly id: number, protected title: string) {}
-}
-```
-
 ### Album
 
 ```ts
@@ -75,5 +54,26 @@ class Album extends Item {
     this.pictures = [];
   }
   public addPicture(picture: Picture) {}
+}
+```
+
+### User
+
+```ts
+class User {
+  private album: Album[];
+
+  constructor(
+    private id: number,
+    private username: string,
+    private firstName: string,
+    private isPro: boolean
+  ) {
+    this.album = [];
+  }
+
+  addAlbum(album: Album) {}
+
+  removeAlbum(album: Album): Album | undefined {}
 }
 ```
